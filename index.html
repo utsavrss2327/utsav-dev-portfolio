@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   <title>Utsav — Developer Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -227,17 +227,100 @@
       box-shadow: 0 25px 50px rgba(196, 30, 42, 0.15);
     }
 
-    /* Responsive adjustments */
+    /* ===== RESPONSIVE ADJUSTMENTS ===== */
+
+    /* Large tablets & small laptops */
+    @media (max-width: 1024px) {
+      .section-marker::after {
+        width: 60px;
+      }
+    }
+
+    /* Tablets */
     @media (max-width: 768px) {
       .giant-headline {
         font-size: clamp(45px, 18vw, 140px);
       }
       .info-badge {
-        width: 60px;
-        height: 60px;
+        width: 64px;
+        height: 64px;
       }
       .section-marker::after {
         width: 40px;
+      }
+      .film-strip {
+        height: 40px;
+      }
+      .film-strip::before,
+      .film-strip::after {
+        height: 12px;
+        background-size: 22px 12px;
+      }
+      .film-strip::before { top: -6px; }
+      .film-strip::after { bottom: -6px; }
+    }
+
+    /* Small phones */
+    @media (max-width: 480px) {
+      .giant-headline {
+        font-size: clamp(38px, 20vw, 100px);
+        letter-spacing: -0.02em;
+      }
+      .info-badge {
+        width: 56px;
+        height: 56px;
+      }
+      .section-marker::after {
+        width: 24px;
+      }
+      .film-strip {
+        height: 32px;
+      }
+      .film-strip::before,
+      .film-strip::after {
+        height: 10px;
+        background-size: 18px 10px;
+      }
+      .film-strip::before { top: -5px; }
+      .film-strip::after { bottom: -5px; }
+      .ticket-card::before {
+        display: none;
+      }
+      .project-card:hover {
+        transform: translateY(-4px);
+      }
+      .gallery-frame:hover {
+        transform: rotate(0deg) scale(1.04) !important;
+      }
+    }
+
+    /* Tiny screens (iPhone SE, Galaxy Fold) */
+    @media (max-width: 380px) {
+      .giant-headline {
+        font-size: clamp(32px, 22vw, 80px);
+      }
+      .info-badge {
+        width: 48px;
+        height: 48px;
+      }
+      .section-marker {
+        display: none;
+      }
+    }
+
+    /* Touch device optimizations */
+    @media (hover: none) and (pointer: coarse) {
+      .cursor-dot, .cursor-outline {
+        display: none !important;
+      }
+      .skill-tag {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .project-card {
+        -webkit-tap-highlight-color: transparent;
       }
     }
   </style>
@@ -250,8 +333,8 @@
   <div class="cursor-outline hidden md:block" id="cursor-outline"></div>
 
   <!-- ==================== NAVIGATION ==================== -->
-  <nav class="fixed top-0 left-0 w-full z-50 px-6 md:px-12 py-5 flex justify-between items-center nav-blend" id="main-nav">
-    <a href="#" class="flex items-center gap-1 font-oswald text-xl md:text-2xl font-bold tracking-tight text-white">
+  <nav class="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 md:px-12 py-3 sm:py-5 flex justify-between items-center nav-blend" id="main-nav">
+    <a href="#" class="flex items-center gap-1 font-oswald text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-white">
       <span>UTSAV</span>
       <svg width="16" height="16" viewBox="0 0 24 24" fill="#C41E2A" class="mt-0.5">
         <polygon points="8,3 20,12 8,21"/>
@@ -296,21 +379,21 @@
       <a href="#contact" class="mobile-link text-3xl font-oswald font-bold tracking-wider hover:text-accent-red transition-colors">CONTACT</a>
     </div>
 
-    <div class="flex items-center gap-2.5">
-      <a href="https://github.com/utsavrss2327" target="_blank" class="w-9 h-9 rounded-full border border-gray-500 flex items-center justify-center hover:border-white hover:bg-white/10 transition-all duration-300">
+    <div class="hidden sm:flex items-center gap-2.5">
+      <a href="https://github.com/utsavrss2327" target="_blank" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-gray-500 flex items-center justify-center hover:border-white hover:bg-white/10 transition-all duration-300">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
       </a>
-      <a href="https://linkedin.com/in/utsav-singh-a2016040a" target="_blank" class="w-9 h-9 rounded-full border border-gray-500 flex items-center justify-center hover:border-white hover:bg-white/10 transition-all duration-300">
+      <a href="https://linkedin.com/in/utsav-singh-a2016040a" target="_blank" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-gray-500 flex items-center justify-center hover:border-white hover:bg-white/10 transition-all duration-300">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
       </a>
-      <a href="https://twitter.com/" target="_blank" class="w-9 h-9 rounded-full border border-gray-500 flex items-center justify-center hover:border-white hover:bg-white/10 transition-all duration-300">
+      <a href="https://twitter.com/" target="_blank" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-gray-500 flex items-center justify-center hover:border-white hover:bg-white/10 transition-all duration-300">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
       </a>
     </div>
   </nav>
 
   <!-- ==================== SECTION 1: HERO ==================== -->
-  <section id="hero" class="relative z-20 min-h-[110vh] bg-accent-black flex flex-col">
+  <section id="hero" class="relative z-20 min-h-screen sm:min-h-[110vh] bg-accent-black flex flex-col">
 
     <!-- Giant Background Text -->
     <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 overflow-hidden">
@@ -321,7 +404,7 @@
 
     <!-- Developer Character Image -->
     <div class="absolute inset-0 flex items-end justify-center z-10 pointer-events-none" id="hero-character">
-      <div class="relative w-[280px] h-[440px] sm:w-[340px] sm:h-[520px] md:w-[440px] md:h-[660px] lg:w-[480px] lg:h-[720px] translate-y-[10%] char-mask">
+      <div class="relative w-[200px] h-[320px] sm:w-[280px] sm:h-[440px] md:w-[400px] md:h-[600px] lg:w-[480px] lg:h-[720px] translate-y-[10%] char-mask">
         <img 
           src="utsav-back.jpg" 
           alt="Tech Abstract" 
@@ -333,7 +416,7 @@
     </div>
 
     <!-- Year Badge -->
-    <div class="absolute right-6 md:right-12 top-1/2 -translate-y-1/2 z-20" id="hero-year">
+    <div class="absolute right-3 sm:right-6 md:right-12 top-1/2 -translate-y-1/2 z-20" id="hero-year">
       <span class="font-oswald text-xs tracking-[0.2em] text-gray-500" style="writing-mode: vertical-rl; transform: rotate(180deg);">
         [2027]
       </span>
@@ -343,14 +426,14 @@
     <div class="film-strip w-full absolute top-[50%] z-20" id="hero-filmstrip"></div>
 
     <!-- Bottom Info Panel -->
-    <div class="absolute bottom-0 left-0 right-0 h-auto min-h-[48%] bg-accent-black z-10 px-6 md:px-16 pt-20 pb-20 md:pt-0 md:pb-10 flex flex-col justify-end">
+    <div class="absolute bottom-0 left-0 right-0 h-auto min-h-[48%] bg-accent-black z-10 px-4 sm:px-6 md:px-16 pt-16 sm:pt-20 pb-16 sm:pb-20 md:pt-0 md:pb-10 flex flex-col justify-end">
       <div class="max-w-7xl mx-auto w-full relative">
 
         <!-- Main Info Row -->
-        <div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-12 md:mb-16">
+        <div class="flex flex-col md:flex-row justify-between items-start sm:items-end gap-4 sm:gap-6 mb-8 sm:mb-12 md:mb-16">
 
           <!-- Left: Role -->
-          <div class="flex flex-col gap-4 md:w-1/4" id="hero-left-info">
+          <div class="flex flex-col gap-3 sm:gap-4 w-full sm:w-auto md:w-1/4" id="hero-left-info">
             <div>
               <p class="text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-1.5 flex items-center gap-2 font-medium">
                 <span class="w-1.5 h-1.5 rounded-full bg-accent-red"></span>
@@ -372,7 +455,7 @@
           </div>
 
           <!-- Center: Circular Badges -->
-          <div class="flex flex-wrap items-center gap-3 md:gap-5 md:w-2/4 justify-center mb-6 md:mb-12" id="hero-badges">
+          <div class="flex flex-wrap items-center gap-2 sm:gap-3 md:gap-5 w-full sm:w-auto md:w-2/4 justify-center mb-4 sm:mb-6 md:mb-12" id="hero-badges">
             <div class="info-badge bg-white text-accent-black shadow-lg">
               <span class="text-[8px] uppercase tracking-[0.15em] font-semibold text-gray-500">Exp</span>
               <span class="font-oswald text-lg md:text-xl font-bold mt-0.5">3+</span>
@@ -389,7 +472,7 @@
           </div>
 
           <!-- Right: Quote -->
-          <div class="md:w-1/4 text-right self-end md:self-auto" id="hero-quote">
+          <div class="hidden sm:block md:w-1/4 text-right self-end md:self-auto" id="hero-quote">
             <div class="border-r-2 border-accent-red pr-4 inline-block text-right">
               <p class="text-[11px] leading-relaxed text-gray-300 font-light italic max-w-[200px]">
                 " Code is like humor. When you have to explain it, it's bad."
@@ -405,7 +488,7 @@
         </div>
 
         <!-- Code Visual — sitting on the boundary -->
-        <div class="absolute left-1/2 -translate-x-1/2 -bottom-24 md:-bottom-32 z-30 w-[220px] h-[300px] md:w-[280px] md:h-[380px] pointer-events-none" id="hero-code-visual">
+        <div class="absolute left-1/2 -translate-x-1/2 -bottom-16 sm:-bottom-24 md:-bottom-32 z-30 w-[160px] h-[220px] sm:w-[220px] sm:h-[300px] md:w-[280px] md:h-[380px] pointer-events-none" id="hero-code-visual">
           <img 
             src="utsav-indoor.png" 
             alt="Utsav Indoor" 
@@ -416,15 +499,15 @@
       </div>
 
       <!-- Bottom Corner Buttons -->
-      <div class="absolute bottom-8 left-6 md:left-12 z-30" id="hero-btn-left">
-        <a href="#about" class="w-11 h-11 rounded-full bg-accent-red flex items-center justify-center glow-red transition-all duration-300 hover:scale-110 group">
+      <div class="absolute bottom-4 sm:bottom-8 left-4 sm:left-6 md:left-12 z-30" id="hero-btn-left">
+        <a href="#about" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-accent-red flex items-center justify-center glow-red transition-all duration-300 hover:scale-110 group">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" class="group-hover:-translate-x-0.5 transition-transform">
             <path d="M15 18l-6-6 6-6"/>
           </svg>
         </a>
       </div>
-      <div class="absolute bottom-8 right-6 md:right-12 z-30" id="hero-btn-right">
-        <a href="#about" class="w-11 h-11 rounded-full bg-white text-accent-black flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg group">
+      <div class="absolute bottom-4 sm:bottom-8 right-4 sm:right-6 md:right-12 z-30" id="hero-btn-right">
+        <a href="#about" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white text-accent-black flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg group">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" class="group-hover:translate-x-0.5 transition-transform">
             <path d="M9 18l6-6-6-6"/>
           </svg>
@@ -434,7 +517,7 @@
   </section>
 
   <!-- ==================== SECTION 2: ABOUT ME (WHITE) ==================== -->
-  <section id="about" class="relative bg-white text-black min-h-screen py-20 md:py-28 px-6 md:px-12 overflow-hidden">
+  <section id="about" class="relative bg-white text-black min-h-screen py-16 sm:py-20 md:py-28 px-4 sm:px-6 md:px-12 overflow-hidden">
 
     <!-- Massive Background Text -->
     <div class="relative z-0 mb-12 md:mb-20 overflow-hidden">
@@ -444,12 +527,12 @@
     </div>
 
     <!-- Gallery Label -->
-    <div class="absolute top-24 md:top-32 left-6 md:left-12 text-[10px] uppercase tracking-[0.2em] text-gray-400 font-medium z-10">
+    <div class="absolute top-16 sm:top-24 md:top-32 left-4 sm:left-6 md:left-12 text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-gray-400 font-medium z-10">
       Education & Journey
     </div>
 
     <!-- Availability (Top Right) -->
-    <div class="absolute top-24 md:top-32 right-6 md:right-12 text-right hidden md:block z-10" id="about-availability">
+    <div class="absolute top-16 sm:top-24 md:top-32 right-4 sm:right-6 md:right-12 text-right hidden md:block z-10" id="about-availability">
       <p class="text-[10px] uppercase tracking-[0.2em] text-accent-red mb-1 flex items-center justify-end gap-2 font-medium">
         Status
         <span class="w-1.5 h-1.5 rounded-full bg-accent-red"></span>
@@ -460,15 +543,15 @@
     </div>
 
     <!-- Section Numbers -->
-    <div class="max-w-6xl mx-auto flex justify-between mb-8 md:mb-14 text-xs text-gray-400 font-oswald tracking-widest px-2" id="about-numbers">
-      <span class="section-marker pr-24 md:pr-32">01</span>
-      <span class="section-marker pr-24 md:pr-32">02</span>
-      <span class="section-marker pr-24 md:pr-32">03</span>
+    <div class="max-w-6xl mx-auto flex justify-between mb-6 sm:mb-8 md:mb-14 text-[10px] sm:text-xs text-gray-400 font-oswald tracking-widest px-2" id="about-numbers">
+      <span class="section-marker pr-8 sm:pr-24 md:pr-32">01</span>
+      <span class="section-marker pr-8 sm:pr-24 md:pr-32">02</span>
+      <span class="section-marker pr-8 sm:pr-24 md:pr-32">03</span>
       <span>04</span>
     </div>
 
     <!-- Tech Avatars -->
-    <div class="flex gap-2 justify-center mb-8 md:mb-12" id="about-avatars">
+    <div class="flex gap-1.5 sm:gap-2 justify-center mb-6 sm:mb-8 md:mb-12" id="about-avatars">
       <div class="w-9 h-9 rounded-full overflow-hidden border-2 border-white shadow-md hover:scale-110 hover:border-accent-red transition-all duration-300 cursor-pointer" title="React">
         <img src="https://kimi-web-img.moonshot.cn/img/images.stockcake.com/616f571d61c20067f8e5382cfe7597796a89fe9a.jpg" class="w-full h-full object-cover" alt="React">
       </div>
@@ -485,12 +568,12 @@
 
     <!-- Center Content -->
     <div class="max-w-5xl mx-auto text-center relative z-20">
-      <h3 class="font-oswald text-2xl md:text-4xl lg:text-5xl font-bold mb-8 md:mb-12 leading-[1.1] text-black" id="about-heading">
+      <h3 class="font-oswald text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 md:mb-12 leading-[1.1] text-black px-2" id="about-heading">
         BRIDGING IDEAS AND REAL-WORLD<br class="hidden md:block"> SOLUTIONS THROUGH CODE
       </h3>
 
       <!-- Slider Indicator -->
-      <div class="flex justify-center items-center gap-3 mb-8 md:mb-12" id="about-slider">
+      <div class="flex justify-center items-center gap-3 mb-6 sm:mb-8 md:mb-12" id="about-slider">
         <button class="text-gray-400 hover:text-accent-red transition-colors text-lg p-2">←</button>
         <div class="w-24 h-0.5 bg-gradient-to-r from-gray-300 via-accent-red to-gray-300 rounded-full relative">
           <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-accent-red"></div>
@@ -501,7 +584,7 @@
       <!-- Center Card + Code Visual -->
       <div class="relative inline-block" id="about-card-wrap">
         <!-- Profile Card -->
-        <div class="ticket-card bg-accent-gray text-white rounded-3xl p-5 md:p-6 w-64 md:w-80 text-left relative overflow-hidden shadow-2xl border border-white/5">
+        <div class="ticket-card bg-accent-gray text-white rounded-2xl sm:rounded-3xl p-4 sm:p-5 md:p-6 w-56 sm:w-64 md:w-80 text-left relative overflow-hidden shadow-2xl border border-white/5">
           <!-- Icon top -->
           <div class="absolute top-4 left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-accent-red flex items-center justify-center shadow-lg">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
@@ -537,7 +620,7 @@
         </div>
 
         <!-- Code snippet overlapping bottom of card -->
-        <div class="absolute -bottom-16 md:-bottom-20 left-1/2 -translate-x-1/2 w-[200px] h-[140px] md:w-[240px] md:h-[160px] z-20 pointer-events-none" id="about-code-snippet">
+        <div class="absolute -bottom-12 sm:-bottom-16 md:-bottom-20 left-1/2 -translate-x-1/2 w-[160px] h-[110px] sm:w-[200px] sm:h-[140px] md:w-[240px] md:h-[160px] z-20 pointer-events-none" id="about-code-snippet">
           <img 
             src="utsav-indoor.png" 
             alt="Code" 
@@ -549,20 +632,20 @@
     </div>
 
     <!-- Side Gallery Images -->
-    <div class="absolute left-2 md:left-16 top-[42%] -translate-y-1/2 hidden sm:flex flex-col gap-3 pointer-events-none md:pointer-events-auto z-0" id="gallery-left">
+    <div class="absolute left-1 sm:left-2 md:left-16 top-[42%] -translate-y-1/2 hidden md:flex flex-col gap-3 pointer-events-none md:pointer-events-auto z-0" id="gallery-left">
       <div class="w-16 h-24 md:w-24 md:h-36 bg-gray-200 rounded-lg overflow-hidden transform -rotate-6 border-[3px] md:border-[5px] border-white gallery-frame">
         <img src="utsav-formal.png" class="w-full h-full object-cover" alt="Workspace" style="filter: saturate(0.85) contrast(1.05);">
       </div>
     </div>
 
-    <div class="absolute right-2 md:right-16 top-[42%] -translate-y-1/2 hidden sm:flex flex-col gap-3 pointer-events-none md:pointer-events-auto z-0" id="gallery-right">
+    <div class="absolute right-1 sm:right-2 md:right-16 top-[42%] -translate-y-1/2 hidden md:flex flex-col gap-3 pointer-events-none md:pointer-events-auto z-0" id="gallery-right">
       <div class="w-16 h-24 md:w-24 md:h-36 bg-gray-200 rounded-lg overflow-hidden transform rotate-6 border-[3px] md:border-[5px] border-white gallery-frame">
         <img src="utsav-front.png" class="w-full h-full object-cover" alt="Tech" style="filter: saturate(0.85) contrast(1.05);">
       </div>
     </div>
 
     <!-- Circular Badge -->
-    <div class="absolute right-2 md:right-16 top-[32%] w-12 h-12 md:w-[72px] md:h-[72px] rounded-full bg-accent-gray border-2 border-accent-red flex items-center justify-center transform rotate-12 shadow-xl z-20" id="about-badge">
+    <div class="absolute right-2 md:right-16 top-[32%] w-10 h-10 sm:w-12 sm:h-12 md:w-[72px] md:h-[72px] rounded-full bg-accent-gray border-2 border-accent-red flex items-center justify-center transform rotate-12 shadow-xl z-20 hidden sm:flex" id="about-badge">
       <div class="text-center leading-none">
         <span class="font-oswald text-accent-red text-[10px] font-bold block">DEV</span>
         <span class="text-[7px] text-gray-500 uppercase tracking-wider">03</span>
@@ -570,7 +653,7 @@
     </div>
 
     <!-- Info Columns -->
-    <div class="absolute left-6 md:left-14 top-[58%] max-w-[160px] hidden lg:block" id="about-info-left">
+    <div class="absolute left-4 sm:left-6 md:left-14 top-[58%] max-w-[140px] sm:max-w-[160px] hidden lg:block" id="about-info-left">
       <p class="text-[10px] uppercase tracking-[0.2em] text-accent-red mb-2 flex items-center gap-2 font-medium">
         <span class="w-1.5 h-1.5 rounded-full bg-accent-red"></span>
         Education
@@ -580,7 +663,7 @@
       </p>
     </div>
 
-    <div class="absolute right-6 md:right-14 top-[58%] max-w-[160px] text-right hidden lg:block" id="about-info-right">
+    <div class="absolute right-4 sm:right-6 md:right-14 top-[58%] max-w-[140px] sm:max-w-[160px] text-right hidden lg:block" id="about-info-right">
       <p class="text-[10px] uppercase tracking-[0.2em] text-accent-red mb-2 flex items-center justify-end gap-2 font-medium">
         Interests
         <span class="w-1.5 h-1.5 rounded-full bg-accent-red"></span>
@@ -592,21 +675,21 @@
   </section>
 
   <!-- ==================== SECTION 3: SKILLS (CLEAN WHITE) ==================== -->
-  <section id="skills" class="relative min-h-screen bg-white text-black flex flex-col items-center justify-center overflow-hidden py-20">
+  <section id="skills" class="relative min-h-screen bg-white text-black flex flex-col items-center justify-center overflow-hidden py-16 sm:py-20">
     <p class="text-[10px] uppercase tracking-[0.3em] text-gray-400 mb-5 font-medium clean-subtitle">Tech Stack</p>
 
     <h1 class="font-oswald font-bold text-[clamp(45px,15vw,200px)] leading-none text-center text-accent-black clean-title">
       SKILL<span class="font-light text-gray-700">S</span>
     </h1>
 
-    <div class="flex justify-center gap-8 md:gap-16 mt-6 font-oswald text-sm md:text-base tracking-[0.2em] text-gray-700 clean-meta">
+    <div class="flex justify-center gap-4 sm:gap-8 md:gap-16 mt-4 sm:mt-6 font-oswald text-xs sm:text-sm md:text-base tracking-[0.15em] sm:tracking-[0.2em] text-gray-700 clean-meta">
       <span>LANGUAGES</span>
       <span>FRAMEWORKS</span>
       <span>TOOLS</span>
     </div>
 
     <!-- Skills Grid -->
-    <div class="mt-12 md:mt-16 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-3xl px-6 relative z-10" id="skills-grid">
+    <div class="mt-8 sm:mt-12 md:mt-16 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3 md:gap-4 max-w-3xl w-full px-4 sm:px-6 relative z-10" id="skills-grid">
       <div class="skill-tag px-4 py-2 rounded-full border border-gray-300 text-[11px] uppercase tracking-wider text-gray-700 text-center cursor-default">C</div>
       <div class="skill-tag px-4 py-2 rounded-full border border-gray-300 text-[11px] uppercase tracking-wider text-gray-700 text-center cursor-default">C++</div>
       <div class="skill-tag px-4 py-2 rounded-full border border-gray-300 text-[11px] uppercase tracking-wider text-gray-700 text-center cursor-default">Python</div>
@@ -626,7 +709,7 @@
     </div>
 
     <!-- CS Fundamentals -->
-    <div class="mt-8 flex flex-wrap justify-center gap-2 md:gap-3 max-w-2xl px-6 relative z-10" id="skills-fundamentals">
+    <div class="mt-6 sm:mt-8 flex flex-wrap justify-center gap-1.5 sm:gap-2 md:gap-3 max-w-2xl px-4 sm:px-6 relative z-10" id="skills-fundamentals">
       <span class="px-3 py-1.5 rounded-full bg-gray-100 text-[10px] uppercase tracking-wider text-gray-500">OS</span>
       <span class="px-3 py-1.5 rounded-full bg-gray-100 text-[10px] uppercase tracking-wider text-gray-500">DBMS</span>
       <span class="px-3 py-1.5 rounded-full bg-gray-100 text-[10px] uppercase tracking-wider text-gray-500">Computer Networks</span>
@@ -639,7 +722,7 @@
   <section id="projects" class="relative min-h-screen bg-accent-black text-white overflow-hidden flex flex-col">
 
     <!-- Tech Names -->
-    <div class="flex flex-wrap justify-between px-6 md:px-16 pt-24 md:pt-28 pb-4 max-w-7xl mx-auto w-full font-oswald text-[10px] md:text-xs uppercase tracking-[0.15em] text-gray-500 gap-3 md:gap-4" id="project-tech-names">
+    <div class="flex flex-wrap justify-between px-4 sm:px-6 md:px-16 pt-20 sm:pt-24 md:pt-28 pb-4 max-w-7xl mx-auto w-full font-oswald text-[9px] sm:text-[10px] md:text-xs uppercase tracking-[0.15em] text-gray-500 gap-2 sm:gap-3 md:gap-4" id="project-tech-names">
       <span class="hover:text-white transition-colors cursor-default">React</span>
       <span class="hover:text-white transition-colors cursor-default">Node.js</span>
       <span class="text-white font-semibold">Python</span>
@@ -647,11 +730,11 @@
     </div>
 
     <!-- Center Stage -->
-    <div class="flex-1 flex items-center justify-center relative px-4 min-h-[400px]">
+    <div class="flex-1 flex items-center justify-center relative px-4 min-h-[280px] sm:min-h-[350px] md:min-h-[400px]">
       <!-- Red Circle Backdrop -->
-      <div class="absolute w-[220px] h-[220px] md:w-[380px] md:h-[380px] rounded-full bg-accent-red opacity-90 cast-circle pulse-glow"></div>
+      <div class="absolute w-[160px] h-[160px] sm:w-[220px] sm:h-[220px] md:w-[380px] md:h-[380px] rounded-full bg-accent-red opacity-90 cast-circle pulse-glow"></div>
 
-      <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[220px] h-[300px] md:w-[320px] md:h-[440px] z-10 cast-character pointer-events-none">
+      <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[160px] h-[220px] sm:w-[220px] sm:h-[300px] md:w-[320px] md:h-[440px] z-10 cast-character pointer-events-none">
         <img src="utsav-back.jpg" alt="Utsav Back" class="w-full h-full object-cover object-top rounded-t-full" style="filter: grayscale(15%) contrast(1.2);">
       </div>
 
@@ -661,14 +744,14 @@
       </h1>
 
       <!-- Code bracket -->
-      <div class="absolute top-[16%] md:top-[12%] left-1/2 -translate-x-1/2 font-oswald text-4xl md:text-6xl font-light text-white z-30 cast-roman">
+      <div class="absolute top-[18%] sm:top-[16%] md:top-[12%] left-1/2 -translate-x-1/2 font-oswald text-2xl sm:text-4xl md:text-6xl font-light text-white z-30 cast-roman">
         &lt;/&gt;
       </div>
     </div>
 
     <!-- Projects Grid -->
-    <div class="relative z-30 px-6 md:px-16 pb-8 max-w-7xl mx-auto w-full">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6" id="projects-grid">
+    <div class="relative z-30 px-4 sm:px-6 md:px-16 pb-8 max-w-7xl mx-auto w-full">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6" id="projects-grid">
 
         <!-- Project 1: utsav-dev-portfolio -->
         <a href="https://github.com/utsavrss2327/utsav-dev-portfolio" target="_blank" class="block project-card bg-accent-gray rounded-2xl p-5 border border-white/5 hover:border-accent-red/50 transition-colors">
@@ -789,7 +872,7 @@
     </div>
 
     <!-- Year Badge -->
-    <div class="absolute right-6 md:right-12 top-1/2 -translate-y-1/2 z-20">
+    <div class="absolute right-3 sm:right-6 md:right-12 top-1/2 -translate-y-1/2 z-20 hidden sm:block">
       <span class="font-oswald text-xs tracking-[0.2em] text-gray-500" style="writing-mode: vertical-rl; transform: rotate(180deg);">
         [2027]
       </span>
@@ -802,14 +885,14 @@
     </div>
 
     <!-- Tech Tags -->
-    <div class="absolute left-6 md:left-16 top-24 md:top-48 flex gap-2 flex-wrap z-30" id="project-tags">
+    <div class="absolute left-4 sm:left-6 md:left-16 top-20 sm:top-24 md:top-48 flex gap-1.5 sm:gap-2 flex-wrap z-30 max-w-[200px] sm:max-w-none" id="project-tags">
       <span class="px-4 py-1.5 rounded-full border border-gray-700 text-[10px] uppercase tracking-[0.15em] text-gray-400 hover:border-accent-red hover:text-accent-red transition-all duration-300 cursor-default">Full Stack</span>
       <span class="px-4 py-1.5 rounded-full border border-gray-700 text-[10px] uppercase tracking-[0.15em] text-gray-400 hover:border-accent-red hover:text-accent-red transition-all duration-300 cursor-default">AI</span>
       <span class="px-4 py-1.5 rounded-full border border-gray-700 text-[10px] uppercase tracking-[0.15em] text-gray-400 hover:border-accent-red hover:text-accent-red transition-all duration-300 cursor-default">Open Source</span>
     </div>
 
     <!-- Bottom Bar -->
-    <div class="relative z-30 px-6 md:px-16 pb-10 md:pb-14 flex flex-col md:flex-row justify-between items-end gap-6 max-w-7xl mx-auto w-full" id="contact">
+    <div class="relative z-30 px-4 sm:px-6 md:px-16 pb-8 sm:pb-10 md:pb-14 flex flex-col md:flex-row justify-between items-start sm:items-end gap-4 sm:gap-6 max-w-7xl mx-auto w-full" id="contact">
       <!-- About -->
       <div class="max-w-xs">
         <p class="text-[10px] uppercase tracking-[0.2em] text-accent-red mb-2 flex items-center gap-2 font-medium">
@@ -823,13 +906,13 @@
 
       <!-- CTA -->
       <div class="flex items-center gap-4">
-        <a href="mailto:utsavrss2327@gmail.com" class="px-7 py-2.5 rounded-full border border-gray-500 text-[11px] uppercase tracking-[0.15em] hover:bg-white hover:text-accent-black hover:border-white transition-all duration-150 flex items-center gap-2 font-medium group">
+        <a href="mailto:utsavrss2327@gmail.com" class="px-5 sm:px-7 py-2.5 rounded-full border border-gray-500 text-[10px] sm:text-[11px] uppercase tracking-[0.15em] hover:bg-white hover:text-accent-black hover:border-white transition-all duration-150 flex items-center gap-2 font-medium group">
           Hire Me
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="group-hover:translate-x-1 transition-transform duration-150">
             <path d="M5 12h14M12 5l7 7-7 7"/>
           </svg>
         </a>
-        <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-accent-gray border-2 border-accent-red flex items-center justify-center transform rotate-12 shadow-lg hover:scale-110 transition-transform cursor-pointer">
+        <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-accent-gray border-2 border-accent-red flex items-center justify-center transform rotate-12 shadow-lg hover:scale-110 transition-transform cursor-pointer">
           <div class="text-center leading-none">
             <span class="font-oswald text-accent-red text-[10px] font-bold block">DEV</span>
             <span class="text-[7px] text-gray-500">01</span>
