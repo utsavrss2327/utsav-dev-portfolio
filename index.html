@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Utsav — Developer Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -64,7 +64,7 @@
 
     /* Giant headline typography */
     .giant-headline {
-      font-size: clamp(80px, 18vw, 260px);
+      font-size: clamp(45px, 15vw, 260px);
       line-height: 0.82;
       letter-spacing: -0.03em;
     }
@@ -230,11 +230,11 @@
     /* Responsive adjustments */
     @media (max-width: 768px) {
       .giant-headline {
-        font-size: clamp(60px, 22vw, 140px);
+        font-size: clamp(45px, 18vw, 140px);
       }
       .info-badge {
-        width: 68px;
-        height: 68px;
+        width: 60px;
+        height: 60px;
       }
       .section-marker::after {
         width: 40px;
@@ -343,7 +343,7 @@
     <div class="film-strip w-full absolute top-[50%] z-20" id="hero-filmstrip"></div>
 
     <!-- Bottom Info Panel -->
-    <div class="absolute bottom-0 left-0 right-0 h-[48%] bg-accent-black z-10 px-6 md:px-16 pb-10 flex flex-col justify-end">
+    <div class="absolute bottom-0 left-0 right-0 h-auto min-h-[48%] bg-accent-black z-10 px-6 md:px-16 pt-20 pb-20 md:pt-0 md:pb-10 flex flex-col justify-end">
       <div class="max-w-7xl mx-auto w-full relative">
 
         <!-- Main Info Row -->
@@ -372,7 +372,7 @@
           </div>
 
           <!-- Center: Circular Badges -->
-          <div class="flex items-center gap-3 md:gap-5 md:w-2/4 justify-center mb-6 md:mb-12" id="hero-badges">
+          <div class="flex flex-wrap items-center gap-3 md:gap-5 md:w-2/4 justify-center mb-6 md:mb-12" id="hero-badges">
             <div class="info-badge bg-white text-accent-black shadow-lg">
               <span class="text-[8px] uppercase tracking-[0.15em] font-semibold text-gray-500">Exp</span>
               <span class="font-oswald text-lg md:text-xl font-bold mt-0.5">3+</span>
@@ -389,7 +389,7 @@
           </div>
 
           <!-- Right: Quote -->
-          <div class="md:w-1/4 text-right" id="hero-quote">
+          <div class="md:w-1/4 text-right self-end md:self-auto" id="hero-quote">
             <div class="border-r-2 border-accent-red pr-4 inline-block text-right">
               <p class="text-[11px] leading-relaxed text-gray-300 font-light italic max-w-[200px]">
                 " Code is like humor. When you have to explain it, it's bad."
@@ -438,7 +438,7 @@
 
     <!-- Massive Background Text -->
     <div class="relative z-0 mb-12 md:mb-20 overflow-hidden">
-      <h2 class="font-oswald font-bold text-[clamp(56px,13vw,200px)] leading-[0.85] text-black whitespace-nowrap text-center" id="about-title">
+      <h2 class="font-oswald font-bold text-[clamp(40px,12vw,200px)] leading-[0.85] text-black whitespace-nowrap text-center" id="about-title">
         ABOUT <span class="text-2xl md:text-4xl align-middle mx-2 md:mx-5 font-light text-gray-700 font-inter">ME</span>
       </h2>
     </div>
@@ -549,20 +549,20 @@
     </div>
 
     <!-- Side Gallery Images -->
-    <div class="absolute left-6 md:left-16 top-[42%] -translate-y-1/2 flex flex-col gap-3 pointer-events-none md:pointer-events-auto z-0" id="gallery-left">
+    <div class="absolute left-2 md:left-16 top-[42%] -translate-y-1/2 hidden sm:flex flex-col gap-3 pointer-events-none md:pointer-events-auto z-0" id="gallery-left">
       <div class="w-16 h-24 md:w-24 md:h-36 bg-gray-200 rounded-lg overflow-hidden transform -rotate-6 border-[3px] md:border-[5px] border-white gallery-frame">
         <img src="utsav-formal.png" class="w-full h-full object-cover" alt="Workspace" style="filter: saturate(0.85) contrast(1.05);">
       </div>
     </div>
 
-    <div class="absolute right-6 md:right-16 top-[42%] -translate-y-1/2 flex flex-col gap-3 pointer-events-none md:pointer-events-auto z-0" id="gallery-right">
+    <div class="absolute right-2 md:right-16 top-[42%] -translate-y-1/2 hidden sm:flex flex-col gap-3 pointer-events-none md:pointer-events-auto z-0" id="gallery-right">
       <div class="w-16 h-24 md:w-24 md:h-36 bg-gray-200 rounded-lg overflow-hidden transform rotate-6 border-[3px] md:border-[5px] border-white gallery-frame">
         <img src="utsav-front.png" class="w-full h-full object-cover" alt="Tech" style="filter: saturate(0.85) contrast(1.05);">
       </div>
     </div>
 
     <!-- Circular Badge -->
-    <div class="absolute right-6 md:right-16 top-[32%] w-14 h-14 md:w-[72px] md:h-[72px] rounded-full bg-accent-gray border-2 border-accent-red flex items-center justify-center transform rotate-12 shadow-xl z-20" id="about-badge">
+    <div class="absolute right-2 md:right-16 top-[32%] w-12 h-12 md:w-[72px] md:h-[72px] rounded-full bg-accent-gray border-2 border-accent-red flex items-center justify-center transform rotate-12 shadow-xl z-20" id="about-badge">
       <div class="text-center leading-none">
         <span class="font-oswald text-accent-red text-[10px] font-bold block">DEV</span>
         <span class="text-[7px] text-gray-500 uppercase tracking-wider">03</span>
@@ -595,7 +595,7 @@
   <section id="skills" class="relative min-h-screen bg-white text-black flex flex-col items-center justify-center overflow-hidden py-20">
     <p class="text-[10px] uppercase tracking-[0.3em] text-gray-400 mb-5 font-medium clean-subtitle">Tech Stack</p>
 
-    <h1 class="font-oswald font-bold text-[clamp(70px,18vw,200px)] leading-none text-center text-accent-black clean-title">
+    <h1 class="font-oswald font-bold text-[clamp(45px,15vw,200px)] leading-none text-center text-accent-black clean-title">
       SKILL<span class="font-light text-gray-700">S</span>
     </h1>
 
@@ -649,14 +649,14 @@
     <!-- Center Stage -->
     <div class="flex-1 flex items-center justify-center relative px-4 min-h-[400px]">
       <!-- Red Circle Backdrop -->
-      <div class="absolute w-[260px] h-[260px] md:w-[380px] md:h-[380px] rounded-full bg-accent-red opacity-90 cast-circle pulse-glow"></div>
+      <div class="absolute w-[220px] h-[220px] md:w-[380px] md:h-[380px] rounded-full bg-accent-red opacity-90 cast-circle pulse-glow"></div>
 
       <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[220px] h-[300px] md:w-[320px] md:h-[440px] z-10 cast-character pointer-events-none">
         <img src="utsav-back.jpg" alt="Utsav Back" class="w-full h-full object-cover object-top rounded-t-full" style="filter: grayscale(15%) contrast(1.2);">
       </div>
 
       <!-- Giant PROJECTS Text -->
-      <h1 class="font-oswald font-bold text-[clamp(70px,16vw,240px)] leading-none relative z-20 text-white whitespace-nowrap cast-title">
+      <h1 class="font-oswald font-bold text-[clamp(45px,14vw,240px)] leading-none relative z-20 text-white whitespace-nowrap cast-title">
         PRO<span class="text-transparent" style="-webkit-text-stroke: 2px rgba(255,255,255,0.3);">J</span>ECTS
       </h1>
 
@@ -775,7 +775,7 @@
     </div>
 
     <!-- Tech Tags -->
-    <div class="absolute left-6 md:left-16 top-40 md:top-48 flex gap-2 flex-wrap" id="project-tags">
+    <div class="absolute left-6 md:left-16 top-24 md:top-48 flex gap-2 flex-wrap z-30" id="project-tags">
       <span class="px-4 py-1.5 rounded-full border border-gray-700 text-[10px] uppercase tracking-[0.15em] text-gray-400 hover:border-accent-red hover:text-accent-red transition-all duration-300 cursor-default">Full Stack</span>
       <span class="px-4 py-1.5 rounded-full border border-gray-700 text-[10px] uppercase tracking-[0.15em] text-gray-400 hover:border-accent-red hover:text-accent-red transition-all duration-300 cursor-default">AI</span>
       <span class="px-4 py-1.5 rounded-full border border-gray-700 text-[10px] uppercase tracking-[0.15em] text-gray-400 hover:border-accent-red hover:text-accent-red transition-all duration-300 cursor-default">Open Source</span>
